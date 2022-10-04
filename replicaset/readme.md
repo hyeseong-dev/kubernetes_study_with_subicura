@@ -202,3 +202,15 @@ replicaset.apps/echo-rs   4         4         4       22m
 - 라벨을 이용 팟을 체크하기 때문에 라벨이 겹치지 않게 신경써서 정의해야함 
 - 실전에서는 레플리카셋을 단독으로 쓰는 경우는 거의 없음 
   - 디플로이먼트를 주로 이용함 
+
+## 문제 
+
+문제1. 다음 조건을 만족하는 ReplicaSet을 만드세요.
+
+|키	|값|
+|---|---|
+|ReplicaSet 이름|	nginx|
+|ReplicaSet selector|	app: nginx|
+|ReplicaSet 복제수|	3|
+|Container 이름|	nginx|
+|Container 이미지|	nginx:latest|
