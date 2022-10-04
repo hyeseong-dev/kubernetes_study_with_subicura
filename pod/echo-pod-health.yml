@@ -1,3 +1,4 @@
+# livenessProbe와 readinessProbe는 같이 적용함.
 apiVersion: v1
 kind: Pod
 metadata:

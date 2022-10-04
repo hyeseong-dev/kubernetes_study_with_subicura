@@ -8,11 +8,14 @@ spec:
   containers:
     - name: app
       image: ghcr.io/subicura/echo:v1
-      livenessProbe:
-        httpGet:
+      livenessProbe: # 컨테이너가 정상적으로 동작하는지 체크하고 동작하지 않을 시 컨테이너를 재기동함
+        httpGet: # http GET 요청을 통해 상태 확인
           path: /not/exist
           port: 8080
         initialDelaySeconds: 5
         timeoutSeconds: 2 # default 1
         periodSeconds: 5 # default 10
         failureThreshold: 1 # default 3
+# 정상적으로 응답하지 않을 것이므로 POD이 여러번 재기동한 이후 CrashLoopBackOff 상태로 변경됨
+# 상태체크
+# httpGet 이외 tcpSocket, exec 방법으로 체크 가능
