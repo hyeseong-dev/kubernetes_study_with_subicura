@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: echo-rs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: echo
+      tier: app
+  template:
+    metadata:
+      labels:
+        app: echo
+        tier: app
+    spec:
+      containers:
+        - name: echo
+          image: ghcr.io/subicura/echo:v1
+# pod 설정이 조금 더 복잡함
+# step by step으로 이해 필요
+
+# - spec.selector: label 체크조건
+# - spec.replicas : 원하는 Pod의 개수
+# - spec.template : 생성할 Pod의 명세
